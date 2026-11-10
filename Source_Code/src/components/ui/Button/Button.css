@@ -1,0 +1,78 @@
+.ui-btn {
+  --btn-bg: var(--ui-primary);
+  --btn-bg-hover: var(--ui-primary-hover);
+  --btn-fg: var(--ui-primary-contrast);
+  --btn-border: transparent;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 18px;
+  min-height: 42px;
+  font: inherit;
+  font-family: var(--ui-font);
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  color: var(--btn-fg);
+  background: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  border-radius: var(--ui-radius-md);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.ui-btn:hover:not(:disabled):not([aria-disabled='true']) { background: var(--btn-bg-hover); }
+.ui-btn:focus-visible { outline: 3px solid var(--ui-focus); outline-offset: 2px; }
+.ui-btn:disabled,
+.ui-btn[aria-disabled='true'] { opacity: 0.5; cursor: not-allowed; }
+.ui-btn.is-loading { cursor: progress; opacity: 0.85; }
+
+/* Variants */
+.ui-btn--secondary {
+  --btn-bg: var(--ui-surface-muted);
+  --btn-bg-hover: #e7e5f2;
+  --btn-fg: var(--ui-text);
+}
+.ui-btn--outline {
+  --btn-bg: transparent;
+  --btn-bg-hover: var(--ui-surface-muted);
+  --btn-fg: var(--ui-text);
+  --btn-border: var(--ui-border);
+}
+.ui-btn--ghost {
+  --btn-bg: transparent;
+  --btn-bg-hover: var(--ui-surface-muted);
+  --btn-fg: var(--ui-primary);
+}
+.ui-btn--danger {
+  --btn-bg: var(--ui-danger);
+  --btn-bg-hover: var(--ui-danger-hover);
+  --btn-fg: #fff;
+}
+
+/* Sizes */
+.ui-btn--sm { min-height: 34px; padding: 0 12px; font-size: 0.875rem; border-radius: var(--ui-radius-sm); }
+.ui-btn--lg { min-height: 52px; padding: 0 26px; font-size: 1.0625rem; }
+.ui-btn--full { display: flex; width: 100%; }
+
+.ui-btn__icon { display: inline-flex; flex: none; }
+.ui-btn__icon svg { width: 1.1em; height: 1.1em; }
+
+.ui-btn__spinner {
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: ui-spin 0.7s linear infinite;
+}
+
+@keyframes ui-spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-btn { transition: none; }
+  .ui-btn__spinner { animation-duration: 1.6s; }
+}

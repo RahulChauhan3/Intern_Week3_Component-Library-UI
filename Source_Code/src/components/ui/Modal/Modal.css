@@ -1,0 +1,80 @@
+.ui-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(14, 12, 32, 0.55);
+  animation: ui-modal-fade 0.15s ease-out;
+}
+
+.ui-modal__dialog {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: calc(100vh - 48px);
+  max-height: calc(100dvh - 48px);
+  color: var(--ui-text);
+  font-family: var(--ui-font);
+  background: var(--ui-surface);
+  border-radius: var(--ui-radius-lg);
+  box-shadow: var(--ui-shadow-lg);
+  animation: ui-modal-rise 0.2s ease-out;
+}
+.ui-modal__dialog:focus { outline: none; }
+.ui-modal__dialog--sm { max-width: 400px; }
+.ui-modal__dialog--md { max-width: 520px; }
+.ui-modal__dialog--lg { max-width: 760px; }
+
+.ui-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 24px 0;
+}
+.ui-modal__title { margin: 0; font-size: 1.3rem; line-height: 1.3; letter-spacing: -0.01em; }
+
+.ui-modal__close {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin: -6px -8px 0 0;
+  color: var(--ui-text-muted);
+  background: transparent;
+  border: 0;
+  border-radius: var(--ui-radius-sm);
+  cursor: pointer;
+}
+.ui-modal__close:hover { background: var(--ui-surface-muted); color: var(--ui-text); }
+.ui-modal__close:focus-visible { outline: 3px solid var(--ui-focus); outline-offset: 1px; }
+
+.ui-modal__body { flex: 1; min-height: 0; overflow-y: auto; padding: 14px 24px 24px; line-height: 1.6; }
+.ui-modal__description { margin: 0 0 14px; color: var(--ui-text-muted); }
+.ui-modal__body > :last-child { margin-bottom: 0; }
+
+.ui-modal__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--ui-border);
+}
+
+@keyframes ui-modal-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ui-modal-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 520px) {
+  .ui-modal { padding: 12px; align-items: flex-end; }
+  .ui-modal__dialog { max-height: calc(100dvh - 24px); }
+  .ui-modal__footer .ui-btn { flex: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-modal, .ui-modal__dialog { animation: none; }
+}
